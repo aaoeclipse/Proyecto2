@@ -16,13 +16,13 @@ def fromImageToArray(image_path):
     im = Image.open(image_path)
     np_im = np.array(im)
 
-    print(np_im.shape)
+    # print(np_im.shape)
     if np_im.shape != new_np.shape:
         # print('ERROR {} is not in correct format. {}'.format(image_path, np_im.shape))
         # print(np_im)
         return 0
 
-    np_im = np_im.reshape((1, 784))
+    np_im = np_im.reshape((784, 1))
 
     b = np_im > 127
     np_im = b.astype(int)

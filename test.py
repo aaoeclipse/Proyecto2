@@ -1,5 +1,5 @@
 from Library.utils import *
-from Library.networkStructure as Network
+import Library.networkStructure as Network
 
 # results = [circle, egg, house, mickey, question, sadface, square, tree, triangle]
 circleResults   = [1,0,0,0,0,0,0,0,0]
@@ -15,6 +15,7 @@ triangleResults = [1,0,0,0,0,0,0,0,1]
 # TestTuples (input, output)
 circleInputs = readElements('Circle')
 testArrayCricles = []
+# print(circleInputs[1].swapaxes(0,1).shape)
 for x in circleInputs:
     tupleTest = (x, circleResults)
     testArrayCricles.append(tupleTest)
@@ -23,12 +24,12 @@ validationData = (testArrayCricles[:4], 'circle')
 
 # Test
 
-net = Network.Network([784, 30, 9])
+net = Network.Network([784, 16, 16, 9])
 
-net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+net.SGD(testArrayCricles, 30, 9, 3.0, test_data=validationData)
 
 
-print(len(readElements('Circle')))
+# print(len(readElements('Circle')))
 # print(len(readElements('Egg')))
 # print(len(readElements('House')))
 # print(len(readElements('MickeyMouse')))
