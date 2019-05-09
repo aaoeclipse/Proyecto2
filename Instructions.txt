@@ -1,8 +1,0 @@
-1. Image -> Vector
-    1.1.  Activations = input value
-    1.2.  Weights -> Matrix. 
-    1.3.  [Weights][Activations] + [BIAS]
-    1.4.  Sigmoid del vector resultante del 1.3
-
-2.  Back propagation
-    2.1 

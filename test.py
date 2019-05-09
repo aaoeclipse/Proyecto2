@@ -1,21 +1,24 @@
 from Library.utils import *
 import Library.networkStructure as Network
+import numpy as np
 
 # results = [circle, egg, house, mickey, question, sadface, square, tree, triangle]
-circleResults   = [1,0,0,0,0,0,0,0,0]
-eggResult       = [0,1,0,0,0,0,0,0,0]
-houseResults    = [0,0,1,0,0,0,0,0,0]
-mickeyResults   = [0,0,0,1,0,0,0,0,0]
-questionResults = [0,0,0,0,1,0,0,0,0]
-sadfaceResults  = [0,0,0,0,0,1,0,0,0]
-squareResults   = [0,0,0,0,0,0,1,0,0]
-treeResults     = [1,0,0,0,0,0,0,1,0]
-triangleResults = [1,0,0,0,0,0,0,0,1]
+circleResults     = np.array([1,0,0,0,0,0,0,0,0,0])
+eggResult         = np.array([0,1,0,0,0,0,0,0,0,0])
+houseResults      = np.array([0,0,1,0,0,0,0,0,0,0])
+mickeyResults     = np.array([0,0,0,1,0,0,0,0,0,0])
+questionResults   = np.array([0,0,0,0,1,0,0,0,0,0])
+sadfaceResults    = np.array([0,0,0,0,0,1,0,0,0,0])      
+squareResults     = np.array([0,0,0,0,0,0,1,0,0,0])
+treeResults       = np.array([0,0,0,0,0,0,0,1,0,0])
+triangleResults   = np.array([0,0,0,0,0,0,0,0,1,0])
+happyfaceResults  = np.array([0,0,0,0,0,0,0,0,0,1])      
+
 
 # TestTuples (input, output)
 circleInputs = readElements('Circle')
 testArrayCricles = []
-# print(circleInputs[1].swapaxes(0,1).shape)
+
 for x in circleInputs:
     tupleTest = (x, circleResults)
     testArrayCricles.append(tupleTest)
@@ -26,7 +29,8 @@ validationData = (testArrayCricles[:4], 'circle')
 
 net = Network.Network([784, 16, 16, 9])
 
-net.SGD(testArrayCricles, 30, 9, 3.0, test_data=validationData)
+net.SGD(testArrayCricles[0], 30, 9, 3.0, test_data=validationData[0])
+
 
 
 # print(len(readElements('Circle')))
